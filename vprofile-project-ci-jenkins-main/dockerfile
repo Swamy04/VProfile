@@ -1,5 +1,5 @@
 FROM openjdk:8 AS BUILD_IMAGE
-RUN apt update && apt install maven -y
+RUN yum update && apt install maven -y
 RUN git clone https://github.com/Swamy04/VProfile.git
 RUN cd /root/VProfile/vprofile-project-ci-jenkins-main && mvn install
 
