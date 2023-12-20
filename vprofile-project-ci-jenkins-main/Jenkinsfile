@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
            steps {
          sh 'echo passed'
-            git branch: 'main', url: 'https://github.com/sekhar334/vprofile.git'
+            git branch: 'main', url: 'https://github.com/Swamy04/VProfile.git'
            }
         }
         
@@ -18,7 +18,7 @@ pipeline {
         
            stage('Static Code Analysis') {
                environment {
-               SONAR_URL = "http://3.95.34.252:9000"
+               SONAR_URL = "http://18.224.153.40:9000"
            }
                steps {
              withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -32,10 +32,10 @@ pipeline {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '18.208.127.193:8081',
+                    nexusUrl: '3.135.237.245:8081',
                     groupId: 'com.visualpathit',
                     version: 'v2',
-                    repository: 'mavenhst',
+                    repository: 'nexus-release',
                     credentialsId: 'nexus',
                     artifacts: [
                         [artifactId: 'vprofile', type: 'war', classifier: '', file: 'target/vprofile-v2.war']
